@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DEMO</title>
+</head>
+<body>
+    <div>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>filename:<input type="file" name="myfile"/></p>
+            <input type="submit" value="upload"/>
+            
+        </form>
+        {% if message %}
+        <p style="color: green;">{{ message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
