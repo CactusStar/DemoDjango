@@ -13,11 +13,11 @@ def regist(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
-        if user.pk:
-            return render(request, 'regist.html', {'error': '用户名已经存在!'})
-        else:
+        if user is None:
             User.objects.create_user(username=username,password=password)
             return HttpResponse("<p>create succeed</p>")
+        else:
+            return render(request, 'regist.html', {'error': '用户名已经存在!'})
     return render(request, 'regist.html')
 
 def login_auth(request):
